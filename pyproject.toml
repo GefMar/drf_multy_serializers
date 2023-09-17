@@ -1,0 +1,78 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+
+[project]
+name = "drf_multy_serializers"
+version = "1.0.0"
+requires-python = ">=3.8"
+description = "Components for creating ViewSets with support for serializers depending on the action and HTTP method."
+readme = "README.md"
+authors = [
+    { name = "Sergei (Gefest) Romanchuk" }
+]
+license = { file = "LICENSE" }
+urls = { homepage = "https://github.com/GefMar/drf_multy_serializers" }
+classifiers = [
+    "License :: OSI Approved :: MIT License"
+]
+
+[project.dependencies]
+djangorestframework = ">=3.12.4"
+
+[tool.isort]
+line_length = 119
+multi_line_output = 3
+include_trailing_comma = true
+
+[tool.ruff]
+select = ["ALL"]
+line-length = 119
+target-version = "py38"
+fixable = ["ALL"]
+ignore = [
+    'ANN002', 'ANN003', 'ANN101',
+    'D100', 'D101', 'D103', 'D102', 'D104', 'D105', 'D106', 'D203', 'D205',
+    "G004",
+    "TD001",
+]
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F403"]
+
+[tool.ruff.flake8-annotations]
+mypy-init-return = true
+ignore-fully-untyped = true
+allow-star-arg-any = true
+
+[tool.ruff.pydocstyle]
+convention = "pep257"
+
+[tool.black]
+line-length = 120
+target-version = ['py38']
+include = '\.pyi?$'
+
+[tool.flakeheaven]
+baseline = "./.flake_baseline"
+max_line_length = 120
+format = "grouped"
+show_source = false
+statistics = false
+inline_quotes = "double"
+
+
+[tool.flakeheaven.plugins]
+wemake-python-styleguide = [
+    "+*", "-WPS110", "-WPS605", "-WPS305", "-WPS306", "-WPS300", "-WPS412", "-WPS410", "-WPS430", "-WPS602",
+]
+
+[tool.flakeheaven.exceptions."*/__init__.py"]
+"*" = [
+    "-WPS440",
+    "-WPS347",
+    "-WPS412",
+]
+
+[tool.flakeheaven.exceptions."*.md"]
+"*" = [
+    "-*",
+]
