@@ -11,9 +11,9 @@ from drf_multy_serializers.type_stubs.http import HTTPMethodsT
 
 @dataclasses.dataclass
 class ActionMethodMapper:
-    serializer_cls: Serializer
-    methods: HTTPMethodsT = ALL_HTTP_METHODS
-    actions: tuple[str] | Literal["all"] = "all"
+    serializer_cls: type[Serializer] = dataclasses.field(kw_only=True)
+    methods: HTTPMethodsT = dataclasses.field(default=ALL_HTTP_METHODS, kw_only=True)
+    actions: tuple[str, ...] | Literal["all"] = dataclasses.field(default="all", kw_only=True)
     __mapper: defaultdict | None = dataclasses.field(init=False, default=None)
 
     @property

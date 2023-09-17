@@ -69,12 +69,17 @@ wemake-python-styleguide = [
     "-WPS601", "-WPS602", "-WPS605",
 ]
 
-[tool.flakeheaven.exceptions."*/__init__.py"]
+[tool.flakeheaven.exceptions."**/__init__.py"]
 "*" = [
     "-WPS440",
     "-WPS347",
     "-WPS412",
 ]
+[tool.flakeheaven.exceptions."**/type_stubs/http.py"]
+"*" = [
+    "-WPS221",
+]
+
 
 [tool.flakeheaven.exceptions."*.md"]
 "*" = [

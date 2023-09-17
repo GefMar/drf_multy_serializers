@@ -6,4 +6,4 @@ PutLiteral = Literal["put"]
 PatchLiteral = Literal["patch"]
 DeleteLiteral = Literal["delete"]
 
-HTTPMethodsT = tuple[GetLiteral, PostLiteral, PutLiteral, PatchLiteral, DeleteLiteral]
+HTTPMethodsT = tuple[GetLiteral | PostLiteral | PutLiteral | PatchLiteral | DeleteLiteral, ...]

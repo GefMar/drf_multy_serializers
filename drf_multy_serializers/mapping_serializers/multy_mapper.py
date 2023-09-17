@@ -11,9 +11,8 @@ from .action_mapper import ActionMethodMapper
 
 @dataclasses.dataclass
 class MultySerializerMapper:
-    _: dataclasses.KW_ONLY
-    default_serializer: Serializer | None
-    mappers: tuple[ActionMethodMapper]
+    mappers: tuple[ActionMethodMapper, ...] = dataclasses.field(kw_only=True)
+    default_serializer: type[Serializer] | None = dataclasses.field(default=None, kw_only=True)
     __mapper: dict = dataclasses.field(init=False)
 
     def __post_init__(self):
